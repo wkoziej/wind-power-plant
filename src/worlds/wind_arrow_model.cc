@@ -12,7 +12,7 @@
 
 namespace gazebo
 {
-  class ModelPush : public ModelPlugin
+  class WindModel : public ModelPlugin
   {
     public: void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
     {
@@ -21,7 +21,7 @@ namespace gazebo
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
       this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-          boost::bind(&ModelPush::OnUpdate, this, _1));
+          boost::bind(&WindModel::OnUpdate, this, _1));
 
       // Initialize ros, if it has not already bee initialized.
       if (!ros::isInitialized())
@@ -65,5 +65,5 @@ namespace gazebo
   };
 
   // Register this plugin with the simulator
-  GZ_REGISTER_MODEL_PLUGIN(ModelPush)
+  GZ_REGISTER_MODEL_PLUGIN(WindModel)
 }
