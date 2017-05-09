@@ -22,8 +22,6 @@ def handle_gondola_direction(req):
         o = resp.link_state.pose.orientation;
         quaternion = (o.x, o.y, o.z, o.w)
         euler = tf.transformations.euler_from_quaternion(quaternion)
-        #        roll = euler[0]
-        #        pitch = euler[1]
         print " euler[2] = %s , radians(euler[2]) = %s" % (euler[2], radians(euler[2]))
         yaw = euler[2]
 
