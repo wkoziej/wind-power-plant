@@ -40,10 +40,10 @@ def wind_direction_changed(wind_direction_data):
             rospy.wait_for_service(turn_gondola_service_name)
             # This take a while
             turn_gondola_srv = rospy.ServiceProxy(turn_gondola_service_name, TurnGondola)
-            print " Gondola RAD %s, DEG = %s " % (gondola_direction, gondola_deg)
-            print " Wind    RAD %s, DEG = %s " % (wind_direction, wind_deg)
-            print " %s - L (GOP %s) - R %s " % (gondola_oposite_deg - wind_deg, gondola_oposite_deg, wind_deg - gondola_oposite_deg)
-            print " Turn gondola %s, %s" % (turn_str, (wind_deg - gondola_oposite_deg + 360) % 360)
+            print " Gondola\t RAD %s,\t DEG = %s " % (gondola_direction, gondola_deg)
+            print " Wind\t\t RAD %s,\t DEG = %s " % (wind_direction, wind_deg)
+#            print " %s - L (GOP %s) - R %s " % (gondola_oposite_deg - wind_deg, gondola_oposite_deg, wind_deg - gondola_oposite_deg)
+            print " Turn gondola %s" % (turn_str)
             
             turn_gondola_srv(change_dir_sign * 1.1)
             

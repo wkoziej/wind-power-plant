@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <model name="wind_arrow">
+      <pose>0 0 1  0 0 0</pose>
+      <static>true</static>
+      <link name="arrow_body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>model://wind_arrow/meshes/arrow.dae</uri></mesh>
+          </geometry>
+
+	    <material>
+	      <ambient>1 0 0 1</ambient>
+	      <diffuse>1 0 0 1</diffuse>
+	      <specular>0.1 0.1 0.1 1</specular>
+	      <emissive>0 0 0 0</emissive>
+	    </material>
+	    
+        </visual>
+      </link>
+      <plugin name="wind_arrow" filename="libwind_arrow_model.so" /> 
+    </model>
+</sdf>

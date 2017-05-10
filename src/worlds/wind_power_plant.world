@@ -8,103 +8,14 @@
       <uri>model://sun</uri>
     </include>
 
-    <model name="wind_arrow">
-      <pose>0 0 1  0 0 0</pose>
-      <static>true</static>
-      <link name="wind_arrow_body">
-        <visual name="visual">
-          <geometry>
-            <mesh><uri>file://meshes/arrow.dae</uri></mesh>
-          </geometry>
-        </visual>
-      </link>
-      <plugin name="wind_arrow" filename="libwind_arrow_model.so" /> 
-    </model>
+
+    <include>
+      <uri>model://wind_arrow</uri>
+    </include>
     
-    <model name="wind_turbine">
-      <static>false</static>      
-      <link name="tower">
-	<collision name='collision'>
-          <geometry>
-	    <mesh><uri>file://meshes/tower.dae</uri></mesh>
-          </geometry>
-	</collision>
-  
-	<pose>0 0 0  0 0 0</pose>
-        <visual name="visual">
-          <geometry>
-            <mesh><uri>file://meshes/tower.dae</uri></mesh>
-          </geometry>
-        </visual>
-      </link>
-
-      <joint name="tower_base" type="fixed">
-	<child>tower</child>
-	<parent>world</parent>
-	<axis>
-	  <xyz>0 0 1</xyz>
-	</axis>
-      </joint> 
-      
-      <link name="gondola">
-	<pose>0 0 3  0 0 0</pose>
-	<collision name='collision'>
-          <geometry>
-            <mesh><uri>file://meshes/gondola.dae</uri></mesh>
-          </geometry>
-	</collision>
-
-        <visual name="visual">
-          <geometry>
-            <mesh><uri>file://meshes/gondola.dae</uri></mesh>
-          </geometry>
-        </visual>
-
-	<inertial>
-	  <mass>1.0</mass>
-	</inertial>
-	
-      </link>
-
-      <link name="turbine">
-	<pose>0.25 0 3  0 0 0</pose>
-
-	<collision name='collision'>
-          <geometry>
-	    <mesh><uri>file://meshes/turbine.dae</uri></mesh>
-          </geometry>
-	</collision>
-
-        <visual name="visual">
-          <geometry>
-            <mesh><uri>file://meshes/turbine.dae</uri></mesh>
-          </geometry>
-        </visual>
-      </link>
-
-      <joint type="revolute" name="gondola_hinge">
-        <pose>0 0 0 0 0 0</pose>
-        <child>gondola</child>
-        <parent>tower</parent>
-        <axis>
-          <xyz>0 0 1</xyz>
-	  <dynamics>
-	    <friction>1</friction>
-	  </dynamics>
-        </axis>
-      </joint>
-
-      <joint type="revolute" name="turbine_hinge">
-        <pose>0 0 0 0 0 0</pose>
-        <child>turbine</child>
-        <parent>gondola</parent>
-        <axis>
-          <xyz>1 0 0</xyz>
-        </axis>
-      </joint>
-      
-    </model>
+    <include>
+      <uri>model://wind_power_plant</uri>
+    </include>
 
   </world>
-
 </sdf>
